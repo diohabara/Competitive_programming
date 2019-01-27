@@ -83,5 +83,6 @@
         "utility": "cpp",
         "valarray": "cpp",
         "vector": "cpp"
-    }
+    },
+    "python.linting.pylintEnabled": true
 }

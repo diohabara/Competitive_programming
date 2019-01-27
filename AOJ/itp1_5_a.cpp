@@ -10,18 +10,19 @@ int main()
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    string s;
-    cin >> s;
-    int l = s.size();
-    for (int i = 0; i < s.size(); i++) {
-        for (int j = 0; j < s.size(); j++) {
-            string tmp = s;
-            if (tmp.erase(i, j) == "keyence") {
-                puts("YES");
-                return 0;
-            }
+    while(true) {
+        int h, w;
+        cin >> h >> w;
+        if (h == 0 && w == 0) {
+            break;
         }
+        rep(i, h) {
+            rep(j, w) {
+                cout << '#';
+            }
+            cout << endl;
+        }
+        cout << endl;
     }
-    puts("NO");
     return 0;
 }

@@ -10,18 +10,15 @@ int main()
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    string s;
-    cin >> s;
-    int l = s.size();
-    for (int i = 0; i < s.size(); i++) {
-        for (int j = 0; j < s.size(); j++) {
-            string tmp = s;
-            if (tmp.erase(i, j) == "keyence") {
-                puts("YES");
-                return 0;
-            }
-        }
+    int n, a, b;
+    cin >> n >> a >> b;
+    int max, mi;
+    max = min(a, b);
+    if (a + b - n > 0) {
+        mi = a + b - n;
+    } else {
+        mi = 0;
     }
-    puts("NO");
+    cout << max<< " " << mi << endl;
     return 0;
 }

@@ -10,18 +10,19 @@ int main()
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    string s;
-    cin >> s;
-    int l = s.size();
-    for (int i = 0; i < s.size(); i++) {
-        for (int j = 0; j < s.size(); j++) {
-            string tmp = s;
-            if (tmp.erase(i, j) == "keyence") {
-                puts("YES");
-                return 0;
-            }
+    int n, a[100000];
+    cin >> n;
+    ll sum = 0, max = -1000000, min = 1000000;
+    rep(i, n) {
+        cin >> a[i];
+        if (a[i] > max) {
+            max = a[i];
         }
+        if (a[i] < min) {
+            min = a[i];
+        }
+        sum += a[i];
     }
-    puts("NO");
+    cout << min << " " << max << " " << sum << endl;
     return 0;
 }

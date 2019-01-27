@@ -10,18 +10,14 @@ int main()
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    string s;
-    cin >> s;
-    int l = s.size();
-    for (int i = 0; i < s.size(); i++) {
-        for (int j = 0; j < s.size(); j++) {
-            string tmp = s;
-            if (tmp.erase(i, j) == "keyence") {
-                puts("YES");
-                return 0;
-            }
-        }
+    int a, b;
+    cin >> a >> b;
+    if (a > b) {
+        puts("a > b");
+    } else if (a < b) {
+        puts("a < b");
+    } else {
+        puts("a == b");
     }
-    puts("NO");
     return 0;
 }
