@@ -8,17 +8,17 @@ int main()
 {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, h[101];
-        cin >> n;
-    int v = 0, e = 0;
+    int n, a[100];
+    cin >> n;
+    REP(i, n){
+        cin >> a[i];
+    }
     REP(i, n) {
-        cin >> h[i];
-        v += h[i];
+        if (i) {
+            cout << " ";
+        }
+        cout << a[n - i - 1];
     }
-
-    REP(i, n - 1) {
-        e += min(h[i], h[i + 1]);
-    }
-    cout << v - e << endl;
+    cout << endl;
     return 0;
 }
