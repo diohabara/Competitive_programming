@@ -13,7 +13,7 @@ int main()
     cin >> x;
     cin >> s;
     REP(i, s.size())
-    {s
+    {
         if (s[i] != x) {
             cout << s[i];
         }
