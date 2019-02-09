@@ -4,16 +4,14 @@
 #define endl '\n'
 using namespace std;
 
-int main()
-{
+int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
     char x;
     string s;
     cin >> x;
     cin >> s;
-    REP(i, s.size())
-    {
+    REP(i, s.size()) {
         if (s[i] != x) {
             cout << s[i];
         }
