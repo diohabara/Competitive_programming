@@ -4,7 +4,8 @@
         "ostream": "cpp",
         "stack": "cpp",
         "ios": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iosfwd": "cpp"
     },
     "git.ignoreLimitWarning": true
 }
