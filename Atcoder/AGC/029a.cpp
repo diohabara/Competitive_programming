@@ -1,37 +1,22 @@
-#include <iostream>
-#include <algorithm>
-#include <cstdio>
-#include <cmath>
-#include <string>
-#include <vector>
-#include <set>
-#include <stack>
-#include <functional>
+#include <bits/stdc++.h>
+#define rep(i, n) for (int i = 0; i < n; i++)
 #define ll long long
+#define endl '\n'
 using namespace std;
 
-
-int main()
-{
-	cin.tie(0);
-	ios::sync_with_stdio(false);
+int main() {
+    cin.tie(0);
+    ios::sync_with_stdio(false);
     string s;
     cin >> s;
-    int n = s.size();
-    int cnt = 0, index = 0;
-    for (int i = 0; i < n; i++) {
-        bool flag = false;
+    int cnt = 0, tmp = 0;
+    for (int i = 0; i < s.size(); i++) {
         if (s[i] == 'W') {
-            flag = false;
-        }
-        if (flag == false && s[i] == 'B') {
-            flag = true;
-            cnt += (i - index);
-            index = i;
-        } else if (flag == false && i == n-1) {
-            cnt += (i - index + 1);
+            cnt += tmp;
+        } else {
+            tmp++;
         }
     }
     cout << cnt << endl;
-	return 0;
+    return 0;
 }
