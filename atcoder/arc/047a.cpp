@@ -15,6 +15,8 @@ int main() {
     rep(i, n) {
         if (s[i] == '+') {
             cnt++;
+        } else {
+            cnt--;
         }
         if (cnt > l) {
             cnt = 1;
