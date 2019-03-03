@@ -7,13 +7,12 @@ using namespace std;
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, m, a, b, c[100];
+    int n, m, a, b;
     cin >> n >> m >> a >> b;
-    for (int i = 0; i < m; i++) {
-        cin >> c[i];
-    }
-    for (int i = 0; i < m; i++) {
-        if (n <= a && n + b >= a) {
+    int c[100];
+    rep(i, m) { cin >> c[i]; }
+    rep(i, m) {
+        if (n <= a) {
             n += b;
         }
         n -= c[i];

@@ -7,13 +7,14 @@ using namespace std;
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, m, N;
-    cin >> n >> m >> N;
-    int ans = 0;
-    while (N > 0) {
-        ans += N;
-        N = N / n * m;
+    ll n, m, N;
+    cin >> m >> n >> N;
+    ll sum = N, rest = 0;
+    while ((N + rest) / m * n > 0) {
+        int quotient = (N + rest) / m, rmd = (N + rest) % m;
+        sum += quotient * n;
+        rest = rmd;
+        N = quotient * n;
     }
-    cout << ans << endl;
-    return 0;
+    cout << sum << endl;
 }
