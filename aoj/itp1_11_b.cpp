@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
-#define REP(i, n) for (int i = 0; i < n; i++)
-#define LL long long
+#define rep(i, n) for (int i = 0; i < n; i++)
+#define ll long long
 #define endl '\n'
 using namespace std;
-
 struct dice {
     int v[6];
     void mov(const char c) {
@@ -40,24 +39,46 @@ struct dice {
                 v[1] = buf;
                 break;
             }
+            case 'R': {
+                buf = v[1];
+                v[1] = v[2];
+                v[2] = v[4];
+                v[4] = v[3];
+                v[3] = buf;
+            }
         }
     }
     int top() { return v[0]; }
+    int right() { return v[2]; }
+    int left() { return v[3]; }
+    int front() { return v[1]; }
 };
 
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
     dice d;
-    int in[6];
     for (int i = 0; i < 6; i++) {
         cin >> d.v[i];
     }
-    string s;
-    cin >> s;
-    for (int i = 0; i < s.size(); i++) {
-        d.mov(s[i]);
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        int a, b;
+        cin >> a >> b;
+        if (d.left() == a) {
+            d.mov('E');
+        }
+        if (d.right() == a) {
+            d.mov('W');
+        }
+        while(d.top() != a) {
+            d.mov('N');
+        }
+        while(d.front() != b) {
+            d.mov('R');
+        }
+        cout << d.right() << endl;
     }
-    cout << d.top() << endl;
     return 0;
 }
