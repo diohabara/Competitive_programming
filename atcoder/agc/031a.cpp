@@ -3,23 +3,24 @@
 #define ll long long
 #define endl '\n'
 using namespace std;
+const ll MOD = 1000000007;
 
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
     int n;
-    cin >> n;
     string s;
+    cin >> n;
     cin >> s;
-    bool cnt_str[26] = {};
-    int cnt = 0;
-    rep(i, n) {
-        if (cnt_str[s[i] - 'a']) {
-            cnt++;
-        } else {
-            cnt_str[s[i] - 'a'] = true;
-        }
+    ll cnt[30] = {};
+    for (int i = 0; i < n; i++) {
+        cnt[s[i] - 'a']++;
     }
+    ll ans = 1;
+    for (int i = 0; i < 30; i++) {
+        ans = ans * (cnt[i] + 1) % MOD;
+    }
+    cout << (ans - 1 + MOD) % MOD << endl;
 
     return 0;
 }
