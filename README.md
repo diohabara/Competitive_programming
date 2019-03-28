@@ -3,10 +3,13 @@
 Codes for competitive programming contests.
 
 ## ac
-for [AtCoder](https://atcoder.jp)
+[AtCoder](https://atcoder.jp)
 
 ## cf
-for [Codeforcdes](http://codeforces.com)
+[Codeforcdes](http://codeforces.com)
 
 ## yk
-for [yukicoder](https://yukicoder.me)
+[yukicoder](https://yukicoder.me)
+
+## aoj
+[Aizu Online Judge](https://onlinejudge.u-aizu.ac.jp)
