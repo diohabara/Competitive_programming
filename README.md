@@ -1,3 +1,3 @@
 # competitive_programming
 
-競技プログラミング用
+codes for competitive_programming
