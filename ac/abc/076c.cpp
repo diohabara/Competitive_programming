@@ -10,17 +10,17 @@ int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
     string s, t;
-    bool flag;
+    bool notcommon;
     cin >> s >> t;
     for (int i = s.size() - t.size(); i >= 0; i--) {
-        flag = true;
+        notcommon = false;
         for (int j = 0; j < t.size(); j++) {
             if (s[i + j] != '?' && s[i + j] != t[j]) {
-                flag = false;
+                notcommon = true;
                 break;
             }
         }
-        if (!flag) {
+        if (notcommon) {
             continue;
         }
 
@@ -36,6 +36,6 @@ int main() {
         return 0;
     }
 
-    puts("UNSTORABLE");
+    puts("UNRESTORABLE");
     return 0;
 }
