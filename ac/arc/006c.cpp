@@ -15,10 +15,12 @@ int main() {
     rep(i, n) { cin >> w[i]; }
 
     vector<int> pile;  // ダンボールの山，i番目の山の最も軽い重さ
+    // 全探索
     for (int i = 0; i < n; i++) {
         int pos = -1;
         // ダンボールの山，それぞれに関して比較する
         for (int j = 0; j < pile.size(); j++) {
+            // 全てのpileの最も軽いものと重さを比較して小さい時
             if (pile[j] >= w[i]) {
                 if (pos == -1) {
                     pos = j;
@@ -27,9 +29,11 @@ int main() {
                 }
             }
         }
-        if (pos == -1) {  // posが-1のとき，新しいダンボールの山を作る
+        // posが-1(これよりも軽いダンボールの山がない)のとき，新しいダンボールの山を作る
+        if (pos == -1) {
             pile.push_back(w[i]);
-        } else {  // 
+        // pos番目のpileをw[i]とする
+        } else {
             pile[pos] = w[i];
         }
     }
