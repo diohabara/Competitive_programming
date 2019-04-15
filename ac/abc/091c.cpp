@@ -15,18 +15,32 @@ int main() {
     vector<P> blue(n);
     for (int i = 0; i < n; i++) {
         cin >> red[i].first >> red[i].second;
-        cin >> blue[i].first >> blue[i].second;
     }
     for (int i = 0; i < n; i++) {
-        int redx = red[i].first, redy = red[i].second;
-        int pos = -1;
+        cin >> blue[i].first >> blue[i].second;
+    }
+    vector<bool> used(n);  // この添字のblueは使われている
+    sort(red.begin(), red.end());
+    sort(blue.begin(), blue.end());
+
+    for (int i = 0; i < n; i++) {
+        int maxy = -1,  // ペアとなるredの最大のy
+            pos = -1;   //  ペアとなっていないredの添字
         for (int j = 0; j < n; j++) {
-            int bluex = blue[j].first, bluey = blue[j].second;
-            int minx = 300, miny = 300;
-            if (redx < bluex && redy < bluey) {
-                cnt++;
-                break;
+            if (red[j].first < blue[i].first &&
+                red[j].second < blue[i].second) {
+                // 最大のyがredのyよりも小さい and
+                // j番目のredが使われていないとき
+                if (maxy < red[j].second && !used[j]) {
+                    maxy = red[j].second;  // maxyを更新
+                    pos = j;               // redのposを更新
+                }
             }
+        }
+        // posの値が初期値でない=更新されたとき
+        if (pos >= 0) {
+            used[pos] = true;  // posのredは使われたので
+            cnt++;
         }
     }
     cout << cnt << endl;
