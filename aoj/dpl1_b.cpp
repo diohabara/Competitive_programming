@@ -1,70 +1,37 @@
 #include <bits/stdc++.h>
-#define REP(i, n) for (int i = 0; i < n; i++)
-#define LL long long
+#define rep(i, n) for (int i = 0; i < n; i++)
+#define ll long long
 #define endl '\n'
+#define maxN 100
+#define maxW 10000
 using namespace std;
-#define NMAX 105
-#define WMAX 100005
-#define DIAGONAL 1
-#define TOP 0
+int dy[4] = {1, 0, -1, 0}, dx[4] = {0, 1, 0, -1};
+typedef pair<ll, ll> P;
 
-struct Item {
-    int value, weight;
-};
-
-int N, W;
-Item items[NMAX + 1];
-int C[NMAX + 1][WMAX + 1], G[NMAX + 1][WMAX + 1];
-
-void compute(int &maxValue, vector<int> &selection) {
-    for (int w = 0; w <= W; w++) {
-        C[0][w] = 0;
-        G[0][w] = DIAGONAL;
-    }
-    for (int i = 1; i <= N; i++) {
-        C[i][0] = 0;
-    }
-    for (int i = 1; i <= N; i++) {
-        for (int w = 1; w <= W; w++) {
-            C[i][w] = C[i - 1][w];
-            G[i][w] = TOP;
-            if (items[i].weight > w) continue;
-            if (items[i].value + C[i - 1][w - items[i].weight] > C[i - 1][w]) {
-                C[i][w] = items[i].value + C[i - 1][w - items[i].weight];
-                G[i][w] = DIAGONAL;
-            }
-        }
-    }
-
-    maxValue = C[N][W];
-    selection.clear();
-    for (int i = N, w = W; i >= 1; i--) {
-        if (G[i][w] == DIAGONAL) {
-            selection.push_back(i);
-            w -= items[i].weight;
-        }
-    }
-
-    reverse(selection.begin(), selection.end());
-}
-
-void input() {
-    cin >> N >> W;
-    for (int i = 1; i <= N; i++) {
-        cin >> items[i].value >> items[i].weight;
-    }
-}
+int dp[maxN + 1][maxW + 1];
+int n, W;
 
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
-
-    int maxValue;
-    vector<int> selection;
-    input();
-    compute(maxValue, selection);
-
-    cout << maxValue << endl;
-
+    cin >> n >> W;
+    vector<int> v(n);
+    vector<int> w(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i] >> w[i];
+    }
+    memset(dp, 0, sizeof(dp));
+    int ans;
+    for (int x = 0; x < n; x++) {
+        for (int y = 0; y <= W; y++) {
+            if (y < w[x]) {
+                dp[x + 1][y] = dp[x][y];
+            } else {
+                dp[x + 1][y] = max(dp[x][y], dp[x][y - w[x]] + v[x]);
+            }
+        }
+    }
+    ans = dp[n][W];
+    cout << ans << endl;
     return 0;
 }
