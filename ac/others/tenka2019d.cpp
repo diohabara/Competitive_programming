@@ -9,6 +9,10 @@ typedef pair<ll, ll> P;
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
-
+    ll n, mod = 998244353;
+    vector<ll> a(n);
+    cin >> n;
+    rep(i, n) { cin >> a[i]; }
+    
     return 0;
 }
