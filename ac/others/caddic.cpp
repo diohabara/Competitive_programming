@@ -20,7 +20,7 @@ int main()
     cout << n << p;
 
     int max_div = 1;
-    for (int i = 1; i <= ; i++) {
+    for (int i = 1; i <= n; i++) {
         ll int tmp = p;
         int cnt_i = 0;
         while (tmp > 0) {
