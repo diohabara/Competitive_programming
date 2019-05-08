@@ -44,7 +44,7 @@ int solve()
         }
     }
 
-    // Dの倍数で制限のある場合とない場合の和が答え
+    // Dの倍数でパス制限のある場合とない場合の和が答え
     int res = (dp[len][0][0] + dp[len][0][1]) % MOD;
     return (res + MOD - 1) % MOD;
 }
