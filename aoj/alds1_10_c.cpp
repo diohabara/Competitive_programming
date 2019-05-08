@@ -1,44 +1,39 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#define rep(i, n) for (int i = 0; i < n; i++)
+#define ll long long
+#define endl '\n'
 using namespace std;
-static const int N = 1000;
+int dy[4] = { 1, 0, -1, 0 }, dx[4] = { 0, 1, 0, -1 };
+typedef pair<ll, ll> P;
+const int MAX_N = 1000;
+int dp[MAX_N + 1][MAX_N + 1];
+string x, y;
+int q;
 
-int  lcs(string X, string Y)
+int solve(string x, string y)
 {
-    int c[N + 1][N + 1];
-    int m = X.size();
-    int n = Y.size();
-    int maxl = 0;
-    X.insert(0, " ");  // X[0]に空白を挿入
-    Y.insert(0, " ");;  // Y[0]に空白を挿入
-
-    for (int i = 1; i <= m; i++) c[i][0] = 0;
-    for (int j = 1; j <= n; j++) c[0][j] = 0;
-
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1; j <= n; j++) {
-            if (X[i] == Y[j]) {
-                c[i][j] = c[i - 1][j - 1] + 1;
+    int n = x.size(), m = y.size();
+    memset(dp, 0, sizeof(dp));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (x[i] == y[j]) {
+                dp[i + 1][j + 1] = dp[i][j] + 1;
             } else {
-                c[i][j] = max(c[i - 1][j], c[i][j - 1]);
+                dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]);
             }
-            maxl = max(maxl, c[i][j]);
-            // if (c[i][j] > maxl) {
-            //     maxl = c[i][j];
-            // }
         }
     }
-
-    return maxl;
+    return dp[n][m];
 }
 
 int main()
 {
-    string s1, s2;
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> s1 >> s2;
-        cout << lcs(s1, s2) << endl;
+    cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin >> q;
+    for (int i = 0; i < q; i++) {
+        cin >> x >> y;
+        cout << solve(x, y) << endl;
     }
     return 0;
 }

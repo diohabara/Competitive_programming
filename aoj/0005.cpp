@@ -10,6 +10,14 @@
 #define rep(i, n) for(int i = 0; i < n; i++)
 #define ll long long
 using namespace std;
+unsigned gcd(unsigned a, unsigned b) {
+    while (1) {
+        if (a < b) swap(a, b);
+        if (!b) break;
+        a %= b;
+    }
+    return a;
+}
 
 int main()
 {
@@ -17,9 +25,9 @@ int main()
   ios::sync_with_stdio(false);
   ll int n, m;
   while(cin >> n >> m) {
-    ll int gcd = __gcd(n, m);
-    ll int lcm = n * m / gcd;
-    cout << gcd << ' ' << lcm << endl;
+    ll gc = gcd(n, m);
+    ll lc = n * m / gc;
+    cout << gc << ' ' << lc << endl;
   }
   return 0;
 }
