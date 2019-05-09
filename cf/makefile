@@ -9,4 +9,4 @@ all: $(TARGETS) # 仮想ファイルを作り，TARGETSを実行する
 # $@: ターゲットファイル名
 # $<: 最初に依存するファイル名
 .cpp:
-	$(CXX) $(CXXFLAGS) -o $@ $<
+	$(CXX) $(CXXFLAGS) -std=c++14 -o $@ $<
