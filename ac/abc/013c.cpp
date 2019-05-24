@@ -1,25 +1,25 @@
-#include <iostream>
-#include <algorithm>
-#include <cstdio>
-#include <cmath>
-#include <string>
-#include <vector>
-#include <set>
-#include <stack>
-#include <functional>
-#define rep(i, n) for(int i = 0; i < n; i++)
-#define ll long long
+#include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
+const ll MOD = (ll)1e9 + 7;
+const ll HIGHINF = (ll)1e18;
 
 int main()
 {
-	cin.tie(0);
-	ios::sync_with_stdio(false);
-    int n, h;
+    ll n, h;
     cin >> n >> h;
-    int a, b, c, d, e;
+    ll a, b, c, d, e;
     cin >> a >> b >> c >> d >> e;
-
-	return 0;
+    ll ans = HIGHINF;
+    for (ll i = 0; i <= n; i++) {
+        ll j = (n - i) * e - h - b * i;
+        if (j >= 0)
+            j = j / (d + e) + 1;
+        else
+            j = 0;
+        ans = min(ans, a * i + c * j);
+    }
+    cout << ans << endl;
+    return 0;
 }
