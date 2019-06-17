@@ -9,6 +9,6 @@ typedef pair<ll, ll> P;
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    cout << "yaaaffafah" << endl;
+    cout << "test compile" << endl;
     return 0;
 }

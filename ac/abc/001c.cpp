@@ -25,7 +25,6 @@ int main()
     dis /= 60;
     w = round(dis * 10) / 10;
 
-
     deg /= 10;
     const double gap = 22.5;
     const double origin = 11.25;
