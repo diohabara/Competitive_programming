@@ -1,0 +1,4 @@
+s = input()
+p = input()
+s += s
+print("Yes") if p in s else print("No")
