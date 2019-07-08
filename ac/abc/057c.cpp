@@ -1,45 +1,35 @@
 #include <bits/stdc++.h>
-#define REP(i, n) for (int i = 0; i < n; i++)
-#define LL long long
-#define endl '\n'
 using namespace std;
+#define ll long long
+#define rep(i, n) for (int i = 0; i < n; i++)
+const ll INF = 1e9;
+const ll MOD = 1e9 + 7;
 
-int digit(LL n)
+ll get_digit(ll m)
 {
-    int idx = 0;
-    while (n > 0) {
+    ll idx = 0;
+
+    while (m > 0) {
+        m /= 10;
         idx++;
-        n /= 10;
     }
     return idx;
 }
 
-int divider(LL n)
-{
-    LL min_d = 10000000000, max_d = -1;
-    int di = 1;
-    while (n >= di * di) {
-        if (n % di == 0) {
-            if (n - n / di < min_d) {
-                min_d = di;
-                max_d = n / di;
-                cout << min_d << " " << max_d << endl;
-            }
-            n /= di;
-        } else {
-            di++;
-        }
-    }
-    return max(digit(min_d), digit(max_d));
-}
-
 int main()
 {
-    cin.tie(0);
-    ios::sync_with_stdio(false);
-    LL n;
+    ll n;
     cin >> n;
-    int ans = divider(n);
+    ll ans = get_digit(n);
+    for (ll a = 1ll; a * a <= n; ++a) {
+        if (n % a != 0) {
+            continue;
+        }
+        const ll b = n / a;
+        const ll cur = max(get_digit(a), get_digit(b));
+        ans = min(ans, cur);
+    }
+
     cout << ans << endl;
     return 0;
 }
