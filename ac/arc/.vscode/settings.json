@@ -1,9 +1,13 @@
 {
     "git.ignoreLimitWarning": true,
     "files.associations": {
+        "*.gs": "javascript",
+        "*.ml": "ocaml",
+        "*.mli": "ocaml",
         "algorithm": "cpp",
         "iostream": "cpp",
         "vector": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "ostream": "cpp"
     }
 }
