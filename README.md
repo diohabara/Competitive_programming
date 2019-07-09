@@ -13,7 +13,7 @@ account:diohabara
 account:diohabara
 
 ## lc
-[leetcode](https://leetcode.com/)
+[LeetCode](https://leetcode.com/)
 
 account:diohabara
 
