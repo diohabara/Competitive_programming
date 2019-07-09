@@ -12,6 +12,11 @@ account:diohabara
 
 account:diohabara
 
+## lc
+[leetcode](https://leetcode.com/)
+
+account:diohabara
+
 ## yk
 [yukicoder](https://yukicoder.me)
 
