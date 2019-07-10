@@ -7,7 +7,11 @@ const ll MOD = 1e9 + 7;
 
 ll factorial(ll num)
 {
-    
+    ll sum = 1;
+    for (ll i = 1; i <= num; ++i) {
+        sum = sum * i % MOD;
+    }
+    return sum;
 }
 int main()
 {
@@ -15,10 +19,10 @@ int main()
     cin >> N >> M;
     if (abs(N - M) > 1) {
         cout << 0 << endl;
-        return 0;
-    }
-    if (N != M) {
-        factorial
+    } else if (N != M) {
+        cout << factorial(N) * factorial(M) % MOD << endl;
+    } else {
+        cout << 2 * factorial(N) * factorial(M) % MOD << endl;
     }
     return 0;
 }
