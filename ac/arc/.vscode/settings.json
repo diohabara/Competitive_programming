@@ -18,5 +18,6 @@
         "initializer_list": "cpp",
         "string_view": "cpp",
         "valarray": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
