@@ -4,22 +4,25 @@
 #define endl '\n'
 using namespace std;
 
-int main() {
+int main()
+{
     cin.tie(0);
     ios::sync_with_stdio(false);
     ll n;
     cin >> n;
     string s;
-    if (n == 0) {
-        s = "0";
-        cout << s << endl;
-    } else {
-        if (n % 2 == 1) {
-            n--;
-            s = "1";
-        } else {
-            
+    while (n != 0) {
+        int r = n % 2;
+        if (r < 0) {
+            r += 2; // rがマイナスにならないように
         }
+        n = (n - r) / (-2);
+        s += (char)('0' + r);
     }
+    reverse(s.begin(), s.end());
+    if (s == "") {
+        s = "0";
+    }
+    cout << s << endl;
     return 0;
 }
