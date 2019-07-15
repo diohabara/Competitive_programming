@@ -10,18 +10,8 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    int a, b;
-    double ans = 0;
-    cin >> a >> b;
-    for (int i = 1; i <= a; ++i) {
-        double tmp = 1.0 / a;
-        int cur = i;
-        while (cur < b) {
-            cur *= 2;
-            tmp /= 2.0;
-        }
-        ans += tmp;
-    }
-    printf("%.12f\n", ans);
+    double W, H, x, y;
+    cin >> W >> H >> x >> y;
+    printf("%lf %d\n", W * H / 2, 2 * x == W && 2 * y == H);
     return 0;
 }
