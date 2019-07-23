@@ -3,26 +3,31 @@
 #define ll long long
 #define endl '\n'
 using namespace std;
-int dy[4] = {1, 0, -1, 0}, dx[4] = {0, 1, 0, -1};
+int dy[4] = { 1, 0, -1, 0 }, dx[4] = { 0, 1, 0, -1 };
 typedef pair<ll, ll> P;
 
-int main() {
+int main()
+{
     cin.tie(0);
     ios::sync_with_stdio(false);
     int n;
     cin >> n;
     vector<ll> a(n);
-    rep(i, n) { cin >> a[i]; }
-    for (int i = 0; i < n - 1; i++) {
-        if (a[i + 1] + a[i] < 0) {
-            a[i + 1] *= -1;
-            a[i] *= -1;
+    ll sum = 0, minus = 0;
+    ll mi = 1e9;
+    rep(i, n)
+    {
+        cin >> a[i];
+        sum += abs(a[i]);
+        if (a[i] < 0) {
+            minus++;
         }
+        mi = min(mi, abs(a[i]));
     }
-    ll sum = 0;
-    for (int i = 0; i < n; i++) {
-        sum += a[i];
+    if (minus % 2 == 0) {
+        cout << sum << endl;
+    } else {
+        cout << sum - mi * 2 << endl;
     }
-    cout << sum << endl;
     return 0;
 }
