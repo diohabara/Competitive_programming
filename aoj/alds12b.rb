@@ -1,9 +1,9 @@
 $cnt = 0
 
 def selection_sort(arr, n)
-  (0...n).each {|i|
+  (0...n).each { |i|
     minj = i
-    (i...n).each{|j|
+    (i...n).each { |j|
       minj = j if arr[j] < arr[minj]
     }
     arr[i], arr[minj] = arr[minj], arr[i]

@@ -3,9 +3,9 @@ def bubble_sort(arr, n)
   flag = true
   while flag
     flag = false
-    (1..n-1).reverse_each {|i|
-      if arr[i] < arr[i-1]
-        arr[i], arr[i-1] = arr[i-1], arr[i]
+    (1..n - 1).reverse_each { |i|
+      if arr[i] < arr[i - 1]
+        arr[i], arr[i - 1] = arr[i - 1], arr[i]
         flag = true
         $cnt += 1
       end

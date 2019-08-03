@@ -1,6 +1,6 @@
 $cnt = 0
 def insertion_sort(arr, n, g)
-  (g...n).each {|i|
+  (g...n).each { |i|
     v = arr[i]
     j = i - g
     while j >= 0 && arr[j] > v
@@ -25,13 +25,13 @@ def shell_sort(arr, n)
   m = g.size
   puts m
   puts g.join(" ")
-  (0...m).each {|i|
+  (0...m).each { |i|
     insertion_sort(arr, n, g[i])
   }
 end
 
 n = gets.to_i
-arr = n.times.map{gets.to_i}
+arr = n.times.map { gets.to_i }
 shell_sort(arr, n)
 puts $cnt
 puts arr
