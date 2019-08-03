@@ -1,2 +1,2 @@
 n = gets.to_i
-puts 10 ** (n -1)
+puts 10**(n - 1)
