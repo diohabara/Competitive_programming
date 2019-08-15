@@ -1,48 +1,65 @@
 #include <bits/stdc++.h>
-#define rep(i, n) for (int i = 0; i < n; i++)
-#define ll long long
-#define endl '\n'
 using namespace std;
-int dy[4] = { 1, 0, -1, 0 }, dx[4] = { 0, 1, 0, -1 };
-typedef pair<ll, ll> P;
-
-char a[1010][1010];
+#define ll long long
+#define rep(i, n) for (ll i = 0; i < n; ++i)
+#define ALL(a) a.begin(), a.end()
+ll dx[4] = { 0, 1, 0, -1 };
+ll dy[4] = { 1, 0, -1, 0 };
+const ll INF = 1e14;
+const ll MOD = 1e9 + 7;
 int H, W;
-
-int bfs(int h, int w, int cnt)
-{
-    if (a[h][w] == '#' || h < 0 || w < 0 || h >= H || w >= W) {
-        return cnt;
-    }
-    cnt++;
-    for (int i = 0; i < 4; i++) {
-        bfs(h + dy[i], w + dx[i], cnt);
-    }
-}
-
+vector<string> fi;
 int main()
 {
+    ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ios::sync_with_stdio(false);
+    // input
     cin >> H >> W;
+    fi.resize(H);
     rep(i, H)
     {
-        rep(j, W)
-        {
-            cin >> a[i][j];
-        }
+        cin >> fi[i];
     }
-    int ans = 0;
+    // output
+    // 多点をスタートとして扱う
+    vector<vector<int>> dist(H, vector<int>(W, -1));
+    queue<pair<int, int>> que;
     rep(i, H)
     {
         rep(j, W)
         {
-            int cnt = 0;
-            if (a[i][j] == '.') {
-                ans = max(bfs(i, j, cnt), ans);
+            if (fi[i][j] == '#') {
+                dist[i][j] = 0;
+                que.push(make_pair(i, j));
             }
         }
     }
-    cout << ans << endl;
+
+    // BFS
+    while (!que.empty()) {
+        auto cur = que.front();
+        que.pop();
+        rep(dir, 4)
+        {
+            int nx = cur.first + dx[dir];
+            int ny = cur.second + dy[dir];
+            if (nx < 0 || nx >= H || ny < 0 || ny >= W) {
+                continue;
+            }
+            if (dist[nx][ny] == -1) {
+                dist[nx][ny] = dist[cur.first][cur.second] + 1;
+                que.push(make_pair(nx, ny));
+            }
+        }
+    }
+    int res = 0;
+    rep(i, H)
+    {
+        rep(j, W)
+        {
+            res = max(res, dist[i][j]);
+        }
+    }
+    cout << res << endl;
     return 0;
 }

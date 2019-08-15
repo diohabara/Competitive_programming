@@ -14,7 +14,7 @@ n = n.to_i
   q = s[1].to_i
   queue = Array.new(n)
   name = Array.new(n)
-  time = Array.new(n)
+  time = Array.new(n) 
 
   0.upto(n - 1) do |i|
     s = STDIN.gets.split

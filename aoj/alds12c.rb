@@ -1,21 +1,23 @@
-def bubble_sort(c, n)
-  (0...n).each { |i|
-    (n - 1).downto(i + 1) { |j|
-      c[j], c[j - 1] = c[j - 1], c[j] if c[j][1] < c[j - 1][1]
-    }
-  }
-  c
+# frozen_string_literal: true
+
+def bubble_sort(a, n)
+  (0...n).each do |i|
+    (n - 1).downto(i + 1) do |j|
+      a[j], a[j - 1] = a[j - 1], a[j] if a[j][1] < a[j - 1][1]
+    end
+  end
+  a
 end
 
-def selection_sort(c, n)
-  (0...n).each { |i|
+def selection_sort(a, n)
+  (0...n).each do |i|
     minj = i
-    (i...n).each { |j|
-      minj = j if c[j][1] < c[minj][1]
-    }
-    c[i], c[minj] = c[minj], c[i] if minj != i
-  }
-  c
+    (i...n).each do |j|
+      minj = j if a[j][1] < a[minj][1]
+    end
+    a[i], a[minj] = a[minj], a[i] if minj != i
+  end
+  a
 end
 
 n = gets.to_i
