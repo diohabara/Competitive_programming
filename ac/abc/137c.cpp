@@ -11,8 +11,10 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    int a, b;
-    cin >> a >> b;
-    cout << max({ a + b, a - b, a * b }) << endl;
+    int N;
+    cin >> N;
+    vector<int> s(N);
+    rep(i, N) { cin >> s[i]; }
+    
     return 0;
 }

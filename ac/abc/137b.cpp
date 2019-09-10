@@ -11,8 +11,14 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    int a, b;
-    cin >> a >> b;
-    cout << max({ a + b, a - b, a * b }) << endl;
+    int k, x;
+    cin >> k >> x;
+    for (int i = x - k + 1; i <= x + k - 1; i++) {
+        if (i != x - k + 1) {
+            cout << " ";
+        }
+        cout << i;
+    }
+    cout << endl;
     return 0;
 }
