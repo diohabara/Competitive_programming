@@ -2,36 +2,33 @@
 
 Codes for competitive programming contests.
 
-## ac
-[AtCoder](https://atcoder.jp)
+account: `diohabara`
 
-account:diohabara
+## [ac](https://atcoder.jp/users/diohabara)
 
-## cf
-[Codeforcdes](http://codeforces.com)
+For [AtCoder](https://atcoder.jp)
 
-account:diohabara
+## [cf](http://codeforces.com/profile/diohabara)
 
-## lc
-[LeetCode](https://leetcode.com/)
+For [Codeforcdes](http://codeforces.com)
 
-account:diohabara
+## [lc](https://leetcode.com/diohabara/)
 
-## yk
-[yukicoder](https://yukicoder.me)
+For [LeetCode](https://leetcode.com/)
 
-account:diohabara
+## [yk](https://yukicoder.me/users/6590)
 
-## aoj
-[Aizu Online Judge](https://onlinejudge.u-aizu.ac.jp)
+For [yukicoder](https://yukicoder.me)
 
-account:diohabara
+## [aoj](https://onlinejudge.u-aizu.ac.jp/status/users/diohabara)
+
+For [Aizu Online Judge](https://onlinejudge.u-aizu.ac.jp)
 
 ## 競技プログラミング極意
 
 * 前提条件と答えるのに必要な条件を確認する
 * できるだけ細かく問題を分割する
-* 具体例を使って考える
+* 抽象的に考えてわからない場合は,具体例を使って考える
 * 共通する部分を見つけたら処理をまとめる
 * エラーが生じた場合の原因を考える
     * ジャッジの判定がどこまで誤差を認めるのか
