@@ -11,38 +11,34 @@ const ll MOD = 1e9 + 7;
 #define MAX 200000
 #define SENTINEL 2000000000
 
-ll L[MAX / 2 + 2], R[MAX / 2 + 2];
+int L[MAX / 2 + 2], R[MAX / 2 + 2];
 
-ll merge(vector<ll> A, ll left, ll mid, ll right)
+ll merge(int A[], int left, int mid, int right)
 {
-    ll i, j;
+    int i, j, k;
     ll cnt = 0;
-    ll n1 = mid - left;
-    ll n2 = right - mid;
+    int n1 = mid - left;
+    int n2 = right - mid;
     for (i = 0; i < n1; i++) {
         L[i] = A[left + i];
     }
     for (i = 0; i < n2; i++) {
         R[i] = A[mid + i];
     }
-    L[n1] = SENTINEL;
-    R[n2] = SENTINEL;
-    i = 0;
-    j = 0;
-    for (int k = left; k < right; k++) {
+    L[n1] = R[n2] = SENTINEL;
+    i = j = 0;
+    for (k = left; k < right; k++) {
         if (L[i] <= R[j]) {
-            A[k] = L[i];
-            i++;
+            A[k] = L[i++];
         } else {
-            A[k] = R[j];
-            j++;
-            cnt += (n1 - i);
+            A[k] = R[j++];
+            cnt += n1 - i;
         }
     }
     return cnt;
 }
 
-ll mergeSort(vector<ll> A, ll left, ll right)
+ll mergeSort(int A[], ll left, ll right)
 {
     ll v1, v2, v3;
     if (left + 1 < right) {
@@ -50,7 +46,6 @@ ll mergeSort(vector<ll> A, ll left, ll right)
         v1 = mergeSort(A, left, mid);
         v2 = mergeSort(A, mid, right);
         v3 = merge(A, left, mid, right);
-        cout << v1 + v2 + v3 << endl;
         return v1 + v2 + v3;
     } else {
         return 0;
@@ -61,9 +56,9 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ll n;
+    int n;
     cin >> n;
-    vector<ll> a(MAX);
+    int a[MAX];
     rep(i, n) { cin >> a[i]; }
 
     ll ans = mergeSort(a, 0, n);
