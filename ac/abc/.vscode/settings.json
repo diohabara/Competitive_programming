@@ -15,7 +15,9 @@
         "array": "cpp",
         "bitset": "cpp",
         "initializer_list": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "deque": "cpp",
+        "vector": "cpp"
     },
     "git.ignoreLimitWarning": true
 }
