@@ -17,7 +17,8 @@
         "initializer_list": "cpp",
         "string_view": "cpp",
         "deque": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "cmath": "cpp"
     },
     "git.ignoreLimitWarning": true
 }
