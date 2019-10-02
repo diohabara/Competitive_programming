@@ -18,7 +18,8 @@
         "string_view": "cpp",
         "deque": "cpp",
         "vector": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "regex": "cpp"
     },
     "git.ignoreLimitWarning": true
 }
