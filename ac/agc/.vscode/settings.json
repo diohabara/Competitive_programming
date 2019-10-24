@@ -1,7 +1,11 @@
 {
     "files.associations": {
+        "*.gs": "javascript",
+        "*.ml": "ocaml",
+        "*.mli": "ocaml",
         "ostream": "cpp",
         "ios": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "iostream": "cpp"
     }
 }
