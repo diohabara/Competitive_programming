@@ -1,8 +1,5 @@
 ./.vscode
 ./a.out
-!*.py
-!*.rb
-!*.cpp
 *
 !*/
 !*/.gitignore
