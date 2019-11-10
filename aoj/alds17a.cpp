@@ -1,88 +1,79 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define rep(i, n) for (ll i = 0; i < n; ++i)
-#define ALL(a) a.begin(), a.end()
-ll dx[4] = { 0, 1, 0, -1 };
-ll dy[4] = { 1, 0, -1, 0 };
-const ll INF = 1e14;
-const ll MOD = 1e9 + 7;
-#define MAX 1000005
+#define MAX 100005
 #define NIL -1
-
-struct Node {
-    int p, l, r;
+struct Node_struct {
+    int parent, left, right;
 };
-
-Node T[MAX];
-int n, D[MAX];
+typedef struct Node_struct Node;
+Node tree[MAX];
+int n, depth[MAX];
 
 void print(int u)
 {
-    cout << "node " << u << ": ";
-    cout << "parent = " << T[u].p << ", ";
-    cout << "depth = " << D[u] << ", ";
-
-    if (T[u].p == NIL) {
-        cout << "root, ";
-    } else if (T[u].l == NIL) {
-        cout << "leaf, ";
-    } else {
-        cout << "internal node, ";
+    int i, c;
+    printf("node %d: parent = %d, depth = %d, ", u, tree[u].parent, depth[u]);
+    if (tree[u].parent == NIL)
+        printf("root, ");
+    else if (tree[u].left == NIL)
+        printf("leaf, ");
+    else
+        printf("internal node, ");
+    printf("[");
+    for (i = 0, c = tree[u].left; c != NIL; i++, c = tree[c].right) {
+        if (i)
+            printf(", ");
+        printf("%d", c);
     }
-    cout << "[";
-    for (int i = 0, c = T[u].l; c != NIL; i++, c = T[c].r) {
-        if (i) {
-            cout << ", ";
-            cout << c;
-        }
-    }
-    cout << "]" << endl;
-    return;
+    printf("]\n");
 }
 
-void rec(int u, int p)
+// 再帰的に深さを求める
+void setDepth(int u, int parent)
 {
-    D[u] = p;
-    if (T[u].r != NIL) {
-        rec(T[u].r, p);
-    }
-    if (T[u].l != NIL) {
-        rec(T[u].l, p + 1);
-    }
-    return;
+    depth[u] = parent; // 最初は0
+    if (tree[u].left != NIL) // 最も左の子に自分の深さ+1
+        setDepth(tree[u].left, parent + 1);
+    if (tree[u].right != NIL) // 右の兄弟に同じ深さを設定
+        setDepth(tree[u].right, parent);
 }
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    int d, v, c, l, r;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        T[i].p = T[i].l = T[i].r = NIL;
-    }
-    for (int i = 0; i < n; i++) {
-        cin >> v >> d;
-        for (int j = 0; j < d; j++) {
-            cin >> c;
-            if (j == 0) {
-                T[v].l = c;
+    int i, j, k;
+    int N;
+    int id, sib, child;
+    int root = NIL;
+    cin >> N;
+    // 全ての節点の親,左右兄弟をNILで初期化する
+    for (i = 0; i < N; i++)
+        tree[i].parent = tree[i].left = tree[i].right = NIL;
+
+    for (i = 0; i < N; i++) {
+        cin >> id >> k;
+        // tree[id]にはkだけ子供がいる
+        for (j = 0; j < k; ++j) {
+            cin >> child;
+            if (j == 0) { // 最初の子供は左
+                tree[id].left = child;
             } else {
-                T[l].r = c;
+                // tree[sib]はparentが同じ
+                // あるid=tree[i].leftからsib=tree[id]にいけ
+                // val=tree[sib].rightからいけるtree[val].rightがNILでないのは全て兄弟
+                tree[sib].right = child;
             }
-            l = c;
-            T[c].p = v;
+            sib = child;
+            tree[child].parent = id;
         }
     }
-    for (int i = 0; i < n; i++) {
-        if (T[i].p == NIL) {
-            r = i;
-        }
+
+    for (i = 0; i < N; i++) {
+        if (tree[i].parent == NIL)
+            root = i;
     }
-    rec(r, 0);
-    for (int i = 0; i < n; i++) {
+    setDepth(root, 0);
+    for (i = 0; i < N; i++)
         print(i);
-    }
+
     return 0;
 }

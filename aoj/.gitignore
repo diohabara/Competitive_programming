@@ -1,2 +1,11 @@
 ./.vscode
 ./a.out
+!*.py
+!*.rb
+!*.cpp
+*
+!*/
+!*/.gitignore
+!*.py
+!*.cpp
+!*.rb
