@@ -1,8 +1,6 @@
-./.vscode
-./a.out
 *
-!*/
-!*/.gitignore
+/__pycache__/
+!.gitignore
 !*.py
 !*.cpp
 !*.rb
