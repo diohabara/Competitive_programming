@@ -12,6 +12,23 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-
+    ll N;
+    cin >> N;
+    vector<ll> A(N);
+    ll sum = 0;
+    rep(i, N)
+    {
+        cin >> A[i];
+        sum += A[i];
+    }
+    ll center = 0;
+    ll ans = LLONG_MAX;
+    for (int i = 0; i < N - 1; i++) {
+        center += A[i];
+        ll right = sum - center;
+        ll need = abs(right - center);
+        ans = min(ans, need);
+    }
+    cout << ans << endl;
     return 0;
 }
