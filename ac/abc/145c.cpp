@@ -9,10 +9,13 @@ static const ll INF = 1 << 21;
 static const ll MOD = 1e9 + 7;
 
 double sum = 0;
+int x[10], y[10];
 
-double getSum(int n)
+double dist(int i, int j)
 {
-
+    double dx = x[i] - x[j];
+    double dy = y[i] - y[j];
+    return pow(dx * dx + dy * dy, 0.5);
 }
 
 int main()
@@ -21,19 +24,25 @@ int main()
     cin.tie(0);
     ll N;
     cin >> N;
-    vector<int> num(N);
-    vector<pair<double, double>> len(N);
+    vector<int> v(N);
+    double sum = 0.0;
     rep(i, N)
     {
-        num[i] = i + 1;
+        cin >> x[i] >> y[i];
+        v[i] = i;
     }
-    rep(i, N)
-    {
-        double x, y;
-        cin >> len[i].first >> len[i].second;
+    cout.precision(10);
+
+    do {
+        rep(i, N - 1)
+        {
+            sum += dist(v[i], v[i + 1]);
+        }
+    } while (next_permutation(v.begin(), v.end()));
+    int fact = 1;
+    for (int i = 2; i <= N; i++) {
+        fact *= i;
     }
-
-    cout << getSum(0) / ((N - 1) * (N - 1)) << endl;
-
+    cout << sum / fact << endl;
     return 0;
 }
