@@ -7,24 +7,27 @@ static const int dy[4] = { 1, 0, -1, 0 };
 static const char dir[4] = { 'u', 'r', 'd', 'l' };
 static const ll INF = 1 << 21;
 static const ll MOD = 1e9 + 7;
-int N, M;
 
-int main()
+signed main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    ll N, M;
     cin >> N >> M;
-    vector<long long> a[3];
+    vector<ll> a[3]; // a[0]=綺麗さ a[1]=おいしさ a[2]=人気度
     rep(i, N)
     {
         rep(j, 3)
         {
-            ll tmp;
+            int tmp;
             cin >> tmp;
-            a[j].emplace_back(tmp);
+            a[j].push_back(tmp);
         }
     }
+
     ll maxv = 0;
     for (int bit = 0; bit < (1 << 3); ++bit) {
-        vector<ll> b;
+        vector<ll> vec;
         rep(i, N)
         {
             ll tmp = 0;
@@ -36,15 +39,17 @@ int main()
                     tmp -= a[j][i];
                 }
             }
-            b.emplace_back(tmp);
+            vec.push_back(tmp);
         }
-        sort(b.begin(), b.end());
-        reverse(b.begin(), b.end());
+        sort(vec.begin(), vec.end());
+        reverse(vec.begin(), vec.end());
         ll sum = 0;
-        for (int i = 0; i < M; ++i) {
-            sum += b[i];
+        rep(i, M)
+        {
+            sum += vec[i];
         }
         maxv = max(maxv, sum);
     }
     cout << maxv << endl;
+    return 0;
 }
