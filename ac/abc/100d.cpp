@@ -19,15 +19,15 @@ signed main()
     {
         rep(j, 3)
         {
-            int tmp;
+            ll tmp;
             cin >> tmp;
-            a[j].push_back(tmp);
+            a[j].emplace_back(tmp);
         }
     }
 
     ll maxv = 0;
     for (int bit = 0; bit < (1 << 3); ++bit) {
-        vector<ll> vec;
+        vector<ll> b;
         rep(i, N)
         {
             ll tmp = 0;
@@ -39,14 +39,14 @@ signed main()
                     tmp -= a[j][i];
                 }
             }
-            vec.push_back(tmp);
+            b.emplace_back(tmp);
         }
-        sort(vec.begin(), vec.end());
-        reverse(vec.begin(), vec.end());
+        sort(b.begin(), b.end());
+        reverse(b.begin(), b.end());
         ll sum = 0;
         rep(i, M)
         {
-            sum += vec[i];
+            sum += b[i];
         }
         maxv = max(maxv, sum);
     }
