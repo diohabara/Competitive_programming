@@ -5,10 +5,10 @@ typedef long long ll;
 static const int dx[4] = { 0, 1, 0, -1 };
 static const int dy[4] = { 1, 0, -1, 0 };
 static const char dir[4] = { 'u', 'r', 'd', 'l' };
-static const ll INF = 1 << 21;
+static const ll INF = 1ll << 60;
 static const ll MOD = 1e9 + 7;
 
-ll N, Ma, Mb;
+ll N, Ma, Mb, dp[51][510][510];
 
 signed main()
 {
@@ -17,25 +17,44 @@ signed main()
     cin >> N >> Ma >> Mb;
     vector<ll> a(N), b(N), c(N);
     rep(i, N) { cin >> a[i] >> b[i] >> c[i]; }
-    ll minv = INF;
-    for (int bit = 0; bit < (1 << N); ++bit) {
-        ll suma = 0, sumb = 0, sumc = 0;
-        for (int i = 0; i < N; ++i) {
-            if (bit & (1 << i)) {
-                suma += a[i];
-                sumb += b[i];
-                sumc += c[i];
+    rep(i, 51)
+    {
+        rep(j, 510)
+        {
+            rep(k, 510)
+            {
+                dp[i][j][k] = INF;
             }
         }
-        if (suma * Mb == sumb * Ma && suma != 0 && sumb != 0) {
-            minv = min(minv, sumc);
+    }
+    dp[0][0][0] = 0;
+    rep(i, N)
+    {
+        rep(wa, 500)
+        {
+            rep(wb, 500)
+            {
+                if (dp[i][wa][wb] >= INF) {
+                    continue;
+                }
+                dp[i + 1][wa][wb] = min(dp[i + 1][wa][wb], dp[i][wa][wb]);
+                dp[i + 1][wa + a[i]][wb + b[i]] = min(dp[i + 1][wa + a[i]][wb + b[i]], dp[i][wa][wb] + c[i]);
+            }
         }
     }
-    if (minv != INF) {
-        cout << minv << endl;
+    ll res = INF;
+    for (int wa = 1; wa < 500; ++wa) {
+        for (int wb = 1; wb < 500; ++wb) {
+            if (wa * Mb != wb * Ma) {
+                continue;
+            }
+            res = min(res, dp[N][wa][wb]);
+        }
+    }
+    if (res != INF) {
+        cout << res << endl;
     } else {
         cout << -1 << endl;
     }
-
     return 0;
 }
