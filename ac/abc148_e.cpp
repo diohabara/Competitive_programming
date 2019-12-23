@@ -9,20 +9,21 @@ static const ll INF = 1 << 21;
 static const ll MOD = 1e9 + 7;
 ll N;
 
-ll get_num(ll n, ll acc = 1)
+ll get_num(ll n)
 {
-    if (n < 10) {
-        return acc;
-    } else {
-        return n / 10 * get_num(n / 10, acc);
+    ll ans = 0;
+    ll div = 10;
+    while (n / div) {
+        ans += n / div;
+        div *= 5;
     }
+    return ans;
 }
 
 signed main()
 {
     cin >> N;
-    cout << N << endl;
-    if (N % 2 == 1 || N < 10) {
+    if (N % 2) {
         cout << 0 << endl;
         return 0;
     } else {
