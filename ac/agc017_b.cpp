@@ -35,3 +35,4 @@ signed main() {
   puts("NO");
   return 0;
 }
+
