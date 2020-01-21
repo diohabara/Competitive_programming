@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+using P = pair<ll, ll>;
+#define rep(i, n) for (ll i = 0; i < (ll)n; ++i)
+#define all(obj) (obj).begin(), (obj).end()
+static const int dx[4] = {0, 1, 0, -1};
+static const int dy[4] = {1, 0, -1, 0};
+static const char dir[4] = {'u', 'r', 'd', 'l'};
+static const ll INF = 1ll << 60;
+static const ll MOD = 1e9 + 7;
+
+signed main() {
+  int N;
+  cin >> N;
+  vector<ll> T(N), A(N);
+  ll maxt = 0ll, maxa = 0ll;
+  rep(i, N) {
+    cin >> T[i];
+    if (T[i] < maxt) {
+      cout << 0 << endl;
+      return 0;
+    }
+    maxt = max(maxt, T[i]);
+  }
+  rep(i, N) {
+    cin >> A[i];
+    if (A[i] < maxa) {
+      cout << 0 << endl;
+      return 0;
+    }
+    maxa = max(maxa, A[i]);
+  }
+
+  return 0;
+}
