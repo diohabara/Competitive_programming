@@ -14,23 +14,27 @@ signed main() {
   int N;
   cin >> N;
   vector<ll> T(N), A(N);
-  ll maxt = 0ll, maxa = 0ll;
-  rep(i, N) {
-    cin >> T[i];
-    if (T[i] < maxt) {
-      cout << 0 << endl;
-      return 0;
-    }
-    maxt = max(maxt, T[i]);
-  }
-  rep(i, N) {
-    cin >> A[i];
-    if (A[i] < maxa) {
-      cout << 0 << endl;
-      return 0;
-    }
-    maxa = max(maxa, A[i]);
+  rep(i, N) { cin >> T[i]; }
+  rep(i, N) { cin >> A[i]; }
+
+  if (A[0] != T[N - 1]) {
+    cout << 0 << endl;
+    return 0;
   }
 
+  ll ans = 1ll;
+  for (int i = 1; i < N - 1; i++) {
+    if (T[i] == T[i - 1] && A[i + 1] == A[i]) {
+      ans *= min(T[i], A[i]);
+      ans %= MOD;
+    } else if (T[i] > T[i - 1] && A[i + 1] == A[i] && A[i] < T[i]) {
+      ans = 0;
+    } else if (T[i] == T[i - 1] && A[i + 1] > A[i] && A[i] > T[i]) {
+      ans = 0;
+    } else if (T[i] > T[i - 1] && A[i + 1] > A[i] && A[i] != T[i]) {
+      ans = 0;
+    }
+  }
+  cout << ans << endl;
   return 0;
 }
