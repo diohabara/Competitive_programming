@@ -1,5 +1,5 @@
 CXX := g++ # コンパイラをg++に指定
-CXXFLAGS := -Wall # コンパイルオプションを指定
+CXXFLAGS := -Wall -g -fsanitize=undefined -D_GLIBCXX_DEBUG# コンパイルオプションを指定
 SUFFIXES := .cpp # ソースの拡張子を指定
 SOURCES = $(wildcard *$(SUFFIXES)) # コンパイルするソースの指定
 TARGETS = $(SOURCES:.cpp=) # 全てのファイルでコンパイルを実行
