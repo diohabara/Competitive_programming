@@ -1,17 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-const long long mod = 1e9 + 7;
 using ll = long long;
 
-#define INF (1e9)
+const ll MOD = 1e9 + 7;
+const ll INF = 1e18;
 
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 
-{% if mod %}
-const long long MOD = {{ mod }};
-{% endif %}
 {% if yes_str %}
 const string YES = "{{ yes_str }}";
 {% endif %}
