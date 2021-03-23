@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+const ll MOD = 1e9 + 7;
+const ll INF = 1e9;
+
+ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
+ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
+
+void solve(long long A, long long B, long long W) {
+  W *= 1000;
+  ll x = (W - 1) / A + 1;
+  ll y = 0;
+  ll maxCnt = -INF, minCnt = INF;
+  while (x != 0) {
+    if (A * x + B * y == W) {
+      maxCnt = max(maxCnt, x + y);
+      minCnt = min(minCnt, x + y);
+      --x, --y;
+    }
+  }
+  if (maxCnt == -INF && minCnt == INF) {
+    cout << "UNSATISFIABLE" << endl;
+    return;
+  }
+  cout << minCnt << " " << maxCnt << endl;
+}
+
+int main() {
+  // cout << fixed << setprecision(5);
+
+  long long A;
+  scanf("%lld", &A);
+  long long B;
+  scanf("%lld", &B);
+  long long W;
+  scanf("%lld", &W);
+  solve(A, B, W);
+  return 0;
+}
