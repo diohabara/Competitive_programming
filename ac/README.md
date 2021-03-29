@@ -9,6 +9,8 @@
 
 ### CLI
 
+`contest-id` is abc100 if you are joining AtCoder Beginner Contest 100.
+
 ```sh
 atcoder-tools gen { contest-id }
 ```
