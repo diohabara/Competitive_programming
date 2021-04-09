@@ -17,5 +17,9 @@ const string NO = "{{ no_str }}";
 {% endif %}
 
 int main(){
-    return 0;
+  // input
+  
+  // solve
+
+  return 0;
 }
