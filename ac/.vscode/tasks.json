@@ -7,7 +7,7 @@
     {
       "label": "competitiveTestSample",
       "type": "shell",
-      "command": "cd ${fileDirname} && g++ -O0 -std=c++17 -D_GLIBCXX_DEBUG ${fileBasename} && atcoder-tools test",
+      "command": "cd ${fileDirname} && g++ -O0 -std=gnu++17 -D_GLIBCXX_DEBUG ${fileBasename} && atcoder-tools test",
       "presentation": {
         "reveal": "always",
         "focus": true,
@@ -17,7 +17,7 @@
     {
       "label": "competitiveSubmit",
       "type": "shell",
-      "command": "cd ${fileDirname} && g++ -O0 -std=c++17 -D_GLIBCXX_DEBUG ${fileBasename} && atcoder-tools submit -u",
+      "command": "cd ${fileDirname} && g++ -O0 -std=gnu++17 -D_GLIBCXX_DEBUG ${fileBasename} && atcoder-tools submit -u",
       "presentation": {
         "reveal": "always",
         "focus": true,
