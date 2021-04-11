@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
 
 const ll MOD = 1e9 + 7;
 const ll INF = 1e18;
@@ -9,6 +10,7 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 
 int main() {
+  // input
   int N;
   cin >> N;
   vector<ll> A(N);
@@ -16,18 +18,16 @@ int main() {
     cin >> A[i];
   }
 
+  // solve
+  unordered_map<ll, ll> cntOfNum;
   ll res = 0;
-  map<ll, ll> cnt;
-  for (int i = 0; i < N; ++i) {
-    cnt[A[i]]++;
+  for (auto& a : A) {
+    cntOfNum[a]++;
   }
-  for (const auto& p1 : cnt) {
-    for (const auto& p2 : cnt) {
-      if (p1.first <= p2.first) continue;
-      res +=
-          p1.second * p2.second * (p1.first - p2.first) * (p1.first - p2.first);
+  for (auto& [k1, v1] : cntOfNum) {
+    for (auto& [k2, v2] : cntOfNum) {
+      res += (k1 - k2) * (k1 - k2) * v1;
     }
   }
-  cout << res << endl;
-  return 0;
+  cout << res / 2 << endl;
 }

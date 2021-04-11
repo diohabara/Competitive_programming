@@ -10,16 +10,19 @@ ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 
 int main() {
+  // input
   ll N;
   cin >> N;
-  unordered_set<ll> s;
+
+  // solve
+  unordered_set<ll> expressed;
   for (ll a = 2; a * a <= N; a++) {
-    ll x = a * a;
-    while (x <= N) {
-      s.insert(x);
-      x *= a;
+    ll cur = a;
+    while (true) {
+      cur *= a;
+      if (N < cur) break;
+      if (expressed.find(cur) == expressed.end()) expressed.insert(cur);
     }
   }
-  cout << N - s.size() << endl;
-  return 0;
+  cout << N - expressed.size() << endl;
 }

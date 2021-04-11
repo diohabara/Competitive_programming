@@ -17,14 +17,15 @@ int main() {
   rep(i, N) { cin >> A[i]; }
 
   // solve
-  int res = 0;
+  int maxOrange = 0;
   rep(l, N) {
-    int x = A[l];
-    for (int r = l; r < N; r++) {
-      x = min(x, A[r]);
-      res = max(res, x * (r - l + 1));
+    int minOrange = A[l];
+    int currentMax = minOrange;
+    for (int r = l + 1; r < N; r++) {
+      minOrange = min(minOrange, A[r]);
+      currentMax = max(currentMax, minOrange * (r - l + 1));
     }
+    maxOrange = max(maxOrange, currentMax);
   }
-  cout << res << endl;
-  return 0;
+  cout << maxOrange << endl;
 }
