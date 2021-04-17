@@ -7,9 +7,6 @@ const ll MOD = 1e9 + 7;
 const int INF = INT_MAX;
 const ll LLINF = LLONG_MAX;
 
-ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
-ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
-
 {% if yes_str %}
 const string YES = "{{ yes_str }}";
 {% endif %} {% if no_str %}
