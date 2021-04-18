@@ -19,14 +19,15 @@ int main() {
   }
 
   // solve
-  unordered_map<ll, ll> cntOfNum;
-  ll res = 0;
+  unordered_map<ll, ll> mp;
   for (auto& a : A) {
-    cntOfNum[a]++;
+    mp[a]++;
   }
-  for (auto& [k1, v1] : cntOfNum) {
-    for (auto& [k2, v2] : cntOfNum) {
-      res += (k1 - k2) * (k1 - k2) * v1;
+
+  ll res = 0;
+  for (auto [key1, val1] : mp) {
+    for (auto [key2, val2] : mp) {
+      res += (key1 - key2) * (key1 - key2) * val1 * val2;
     }
   }
   cout << res / 2 << endl;
