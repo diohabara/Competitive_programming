@@ -16,21 +16,20 @@ int main() {
   rep(i, 3) { cin >> s[i]; }
 
   // solve
-  unordered_map<char, int> mp;  // mp[character] = coefficient
-  set<char> heads;              // head character must not be 0
+  unordered_map<char, ll> coefOfChar;
+  set<char> heads;
   rep(i, 3) {
     reverse(s[i].begin(), s[i].end());
-    ll co = 1;  // coefficient
-    if (i == 2) co = -1;
-    for (char c : s[i]) {
-      mp[c] += co;
+    ll co = i == 2 ? -1 : 1;
+    for (char& c : s[i]) {
+      coefOfChar[c] += co;
       co *= 10;
     }
     reverse(s[i].begin(), s[i].end());
     heads.insert(s[i][0]);
   }
 
-  if (10 < mp.size()) {
+  if (10 < coefOfChar.size()) {
     cout << "UNSOLVABLE" << endl;
     return 0;
   }
@@ -40,24 +39,26 @@ int main() {
   do {
     int i = 0;
     ll total = 0;
-    for (auto x : mp) {
-      char c = x.first;
-      ll co = x.second;
-      if (p[i] == 0 && heads.count(c)) total = LLINF;  // This is not the answer
+    for (auto& [c, co] : coefOfChar) {
+      if (p[i] == 0 && heads.count(c)) {
+        total = LLINF;
+        break;
+      }
       total += co * p[i];
       ++i;
     }
     if (total == 0) {
       i = 0;
-      for (auto& x : mp) {
-        x.second = p[i];
+      unordered_map<char, int> numOfChar;
+      for (auto& [ch, _] : coefOfChar) {
+        numOfChar[ch] = p[i];
         ++i;
       }
-      // print correct numbers
       rep(i, 3) {
         ll x = 0;
-        for (char c : s[i]) {
-          x = x * 10 + mp[c];
+        for (char& c : s[i]) {
+          x *= 10;
+          x += numOfChar[c];
         }
         cout << x << endl;
       }
