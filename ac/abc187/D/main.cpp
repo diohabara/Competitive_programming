@@ -14,24 +14,21 @@ int main() {
   // input
   int N;
   cin >> N;
-  ll X = 0;
-  vector<ll> x(N);
-  rep(i, N) {
-    ll A, B;
-    cin >> A >> B;
-    X -= A;
-    x[i] = 2 * A + B;
-  }
+  vector<ll> A(N), B(N);
+  rep(i, N) { cin >> A[i] >> B[i]; }
 
   // solve
-  sort(x.begin(), x.end(), greater<ll>());
-  ll res = 0;
-  for (auto& e : x) {
-    X += e;
-    res++;
-    if (0 < X) {
-      cout << res << endl;
+  ll total = 0;
+  rep(i, N) { total += A[i]; }
+  vector<ll> comp(N);
+  rep(i, N) { comp[i] = 2 * A[i] + B[i]; }
+  sort(comp.begin(), comp.end(), greater<ll>());
+  rep(i, N) {
+    if (total < 0) {
+      cout << i << endl;
       return 0;
     }
+    total -= comp[i];
   }
+  cout << N << endl;
 }
