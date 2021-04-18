@@ -10,13 +10,14 @@ const ll LLINF = LLONG_MAX;
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 
-string to_oct(int n) {
-  string s;
-  while (n) {
-    s = to_string(n % 8) + s;
-    n /= 8;
+string octalise(int decimal) {
+  int i = 1, octal = 0;
+  while (decimal) {
+    octal += (decimal % 8) * i;
+    decimal /= 8;
+    i *= 10;
   }
-  return s;
+  return to_string(octal);
 }
 
 int main() {
@@ -27,10 +28,9 @@ int main() {
   // solve
   int cnt = 0;
   for (int i = 1; i <= N; i++) {
-    if (to_string(i).find('7') == string::npos &&
-        to_oct(i).find('7') == string::npos) {
-      cnt++;
-    }
+    string ten = to_string(i);
+    string oct = octalise(i);
+    if (ten.find('7') == string::npos && oct.find('7') == string::npos) cnt++;
   }
   cout << cnt << endl;
 }
