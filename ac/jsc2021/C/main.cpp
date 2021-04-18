@@ -13,11 +13,10 @@ int main() {
   cin >> A >> B;
 
   // solve
-  int res = 1;
-  for (int x = A; x <= B; ++x) {
-    for (int y = x + 1; y <= B; ++y) {
-      res = max(res, gcd(x, y));
+  for (int c = B;; c--) {
+    if ((A + c - 1) / c < B / c) {
+      cout << c << endl;
+      return 0;
     }
   }
-  cout << res << endl;
 }
