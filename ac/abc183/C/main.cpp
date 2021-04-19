@@ -7,9 +7,6 @@ const ll MOD = 1e9 + 7;
 const int INF = INT_MAX;
 const ll LLINF = LLONG_MAX;
 
-ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
-ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
-
 int main() {
   // input
   int N, K;
@@ -20,16 +17,20 @@ int main() {
   }
 
   // solve
-  vector<int> index(N);
-  iota(index.begin(), index.end(), 0);
-
-  int res = 0;
+  vector<int> cities(N);
+  iota(cities.begin(), cities.end(), 0);
+  int cnt = 0;
   do {
-    int time = 0;
-    rep(i, N) { time += T[index[i]][index[(i + 1) % N]]; }
-    if (time == K) {
-      res++;
+    int from = 0;
+    int total = 0;
+    for (auto to : cities) {
+      total += T[from][to];
+      from = to;
     }
-  } while (next_permutation(index.begin() + 1, index.end()));
-  cout << res << endl;
+    total += T[from][0];
+    if (total == K) {
+      cnt++;
+    }
+  } while (next_permutation(cities.begin() + 1, cities.end()));
+  cout << cnt << endl;
 }

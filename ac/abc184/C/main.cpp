@@ -17,14 +17,15 @@ int main() {
   cin >> r2 >> c2;
 
   // solve
-  ll r = r2 - r1, c = c2 - c1;
+  int r = r2 - r1, c = c2 - c1;
   int res = 3;
-  if (!r && !c)
+  if (!r && !c) {
     res = 0;
-  else if (r == c || r == -c || abs(r) + abs(c) <= 3)
+  } else if (r == c || r == -c || abs(r) + abs(c) <= 3) {
     res = 1;
-  else if ((r + c) % 2 == 0 || abs(r + c) <= 3 || abs(r - c) <= 3 ||
-           abs(r) + abs(c) <= 6)
+  } else if ((r ^ c ^ 1) & 1 || abs(r + c) <= 3 || abs(r - c) <= 3 ||
+             abs(r) + abs(c) <= 6) {
     res = 2;
+  }
   cout << res << endl;
 }
