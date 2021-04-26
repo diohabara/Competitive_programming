@@ -2,8 +2,6 @@
 
 Codes for competitive programming contests.
 
-account: `diohabara`
-
 ## ac
 
 For [AtCoder](https://atcoder.jp)
