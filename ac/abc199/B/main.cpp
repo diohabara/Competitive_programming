@@ -7,6 +7,7 @@ const ll MOD = 1e9 + 7;
 const int INF = INT_MAX;
 const ll LLINF = LLONG_MAX;
 
+<<<<<<< HEAD
 int main() {
   // input
   int N;
@@ -19,4 +20,11 @@ int main() {
   auto maxA = max_element(A.begin(), A.end());
   auto minB = min_element(B.begin(), B.end());
   cout << max(0, *minB - *maxA + 1) << endl;
+=======
+ 
+int main() {
+  // input
+
+  // solve
+>>>>>>> refs/remotes/origin/master
 }

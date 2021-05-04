@@ -7,6 +7,10 @@ const ll MOD = 1e9 + 7;
 const int INF = INT_MAX;
 const ll LLINF = LLONG_MAX;
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> refs/remotes/origin/master
 int main() {
   // input
 
