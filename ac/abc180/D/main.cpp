@@ -13,10 +13,10 @@ int main() {
   cin >> X >> Y >> A >> B;
 
   // solve
-  ll res = 0;
-  while ((double)A * X <= 1e18 && A * X <= B + X && A * X < Y) {
+  ll ans = 0;
+  while ((double)A * X <= 2e18 && A * X <= X + B && A * X <= Y) {
     X *= A;
-    res++;
+    ans++;
   }
-  cout << res + (Y - 1 - X) / B << endl;
+  cout << ans + (Y - X - 1) / B << endl;
 }

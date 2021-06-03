@@ -9,40 +9,48 @@ const ll LLINF = LLONG_MAX;
 
 int main() {
   // input
-  string N;
+  ll N;
   cin >> N;
 
   // solve
-  int mod = 0;
-  unordered_map<int, int> cntOfMod;
-  for (char c : N) {
-    int digit = (c - '0') % 3;
-    cntOfMod[digit]++;
-    mod += digit;
+  ll cnt[3] = {0};
+  while (N) {
+    cnt[N % 10 % 3]++;
+    N /= 10;
   }
-  mod %= 3;
-
-  if (mod == 2) {
-    if (cntOfMod[2] && cntOfMod[2] < (int)N.size()) {
-      cout << 1 << endl;
-      return 0;
-    }
-    if (2 <= cntOfMod[1] && cntOfMod[1] < (int)N.size()) {
-      cout << 2 << endl;
-      return 0;
-    }
-  } else if (mod == 1) {
-    if (cntOfMod[1] && cntOfMod[1] < (int)N.size()) {
-      cout << 1 << endl;
-      return 0;
-    }
-    if (2 <= cntOfMod[2] && cntOfMod[2] < (int)N.size()) {
-      cout << 2 << endl;
-      return 0;
+  int cur = (cnt[1] + 2 * cnt[2]) % 3;
+  int k = cnt[0] + cnt[1] + cnt[2];
+  int res;
+  if (cur == 0) {
+    res = 0;
+  } else if (cur == 1) {
+    if (cnt[1]) {
+      if (k == 1) {
+        res = -1;
+      } else {
+        res = 1;
+      }
+    } else if (cur == 1) {
+      if (k == 2) {
+        res = -1;
+      } else {
+        res = 2;
+      }
     }
   } else {
-    cout << 0 << endl;
-    return 0;
+    if (cnt[2]) {
+      if (k == 1) {
+        res = -1;
+      } else {
+        res = 1;
+      }
+    } else {
+      if (k == 2) {
+        res = -1;
+      } else {
+        res = 2;
+      }
+    }
   }
-  cout << -1 << endl;
+  cout << res << endl;
 }

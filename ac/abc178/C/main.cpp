@@ -19,8 +19,11 @@ int main() {
   cin >> N;
 
   // solve
-  ll res = powmod(10, N) - powmod(9, N) - powmod(9, N) + powmod(8, N);
-  res %= MOD;
-  res = (res + MOD) % MOD;
-  cout << res << endl;
+  // all
+  ll total = powmod(10, N);
+  ll no_zero_nine = powmod(9, N);
+  no_zero_nine += powmod(9, N);
+  no_zero_nine %= MOD;
+  no_zero_nine -= powmod(8, N);
+  cout << (total - no_zero_nine + MOD) % MOD << endl;
 }
