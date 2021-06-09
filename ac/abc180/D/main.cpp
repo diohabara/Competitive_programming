@@ -1,10 +1,10 @@
+#pragma once
 #include <bits/stdc++.h>
 
 #include <boost/multiprecision/cpp_int.hpp>
-
+using namespace boost::multiprecision;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 using ll = long long;
-using namespace boost::multiprecision;
 using namespace std;
 
 const ll MOD = 1e9 + 7;
