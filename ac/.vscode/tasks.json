@@ -7,7 +7,7 @@
     {
       "label": "competitiveTestSample",
       "type": "shell",
-      "command": "cd ${fileDirname} && g++ -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools test",
+      "command": "cd ${fileDirname} && g++ -I /usr/local/Cellar/boost/1.76.0/include/ -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools test",
       "presentation": {
         "reveal": "always",
         "focus": true,
@@ -17,7 +17,7 @@
     {
       "label": "competitiveSubmit",
       "type": "shell",
-      "command": "cd ${fileDirname} && g++ -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools submit -u",
+      "command": "cd ${fileDirname} && g++ -I /usr/local/Cellar/boost/1.76.0/include/ -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools submit -u",
       "presentation": {
         "reveal": "always",
         "focus": true,
