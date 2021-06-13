@@ -16,4 +16,53 @@ int main() {
   rep(i, 3) { cin >> s[i]; }
 
   // solve
+  map<char, ll> mp;
+  set<char> heads;
+  rep(i, 3) {
+    reverse(s[i].begin(), s[i].end());
+    ll co = i == 2 ? -1 : 1;
+    for (char c : s[i]) {
+      mp[c] += co;
+      co *= 10;
+    }
+    reverse(s[i].begin(), s[i].end());
+    heads.insert(s[i][0]);
+  }
+
+  if (10 < mp.size()) {
+    cout << "UNSOLVABLE" << endl;
+    return 0;
+  }
+
+  vector<int> p(10);
+  iota(p.begin(), p.end(), 0);
+  do {
+    int i = 0;
+    ll tot = 0;
+    for (auto x : mp) {
+      char c = x.first;
+      ll co = x.second;
+      if (p[i] == 0 && heads.count(c)) {
+        tot = 1e18;
+      }
+      tot += co * p[i];
+      ++i;
+    }
+    if (tot == 0) {
+      i = 0;
+      for (auto& x : mp) {
+        x.second = p[i];
+        ++i;
+      }
+      rep(i, 3) {
+        ll x = 0;
+        for (char c : s[i]) {
+          x = x * 10 + mp[c];
+        }
+        cout << x << endl;
+      }
+      return 0;
+    }
+  } while (next_permutation(p.begin(), p.end()));
+  cout << "UNSOLVABLE" << endl;
 }

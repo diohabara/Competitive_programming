@@ -14,15 +14,19 @@ int main() {
   cin >> r2 >> c2;
 
   // solve
-  // ref: https://drken1215.hatenablog.com/entry/2020/11/22/224600
-  int r = abs(r2 - r1), c = abs(c2 - c1);
-  int res = 3;
-  if (r == 0 && c == 0) {
+  ll r = abs(r1 - r2), c = abs(c1 - c2);
+  ll p1 = abs((r1 + c1) - (r2 + c2));
+  ll p2 = abs(abs(r1 - c1) - abs(r2 - c2));
+  ll res;
+  if (r1 == r2 && c1 == c2) {
     res = 0;
-  } else if (r == c || r + c <= 3) {
+  } else if (r + c <= 3 || p1 == 0 || p2 == 0) {
     res = 1;
-  } else if ((r + c) % 2 == 0 || r + c <= 6 || abs(r - c) <= 3) {
+  } else if (r + c <= 6 || p1 <= 3 || p2 <= 3 ||
+             abs(r1 - c1) % 2 == abs(r2 - c2) % 2) {
     res = 2;
+  } else {
+    res = 3;
   }
   cout << res << endl;
 }
