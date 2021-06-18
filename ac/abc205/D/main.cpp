@@ -20,8 +20,15 @@ int main() {
   rep(i, Q) { cin >> K[i]; }
 
   // solve
+  vector<ll> C(N);
+  rep(i, N) { C[i] = A[i] - (i + 1); }
   rep(i, Q) {
-    auto iter_lower = lower_bound(A.begin(), A.end(), K[i]);
-    cout << K[i] + distance(A.begin(), iter_lower) << endl;
+    if (C[N - 1] < K[i]) {
+      cout << A[N - 1] + (K[i] - C[N - 1]) << endl;
+    } else {
+      auto it = lower_bound(C.begin(), C.end(), K[i]);
+      auto lower_i = distance(C.begin(), it);
+      cout << (A[lower_i] - 1) - (C[lower_i] - K[i]) << endl;
+    }
   }
 }
