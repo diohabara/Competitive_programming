@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 
+#include <atcoder/all>
 #include <boost/multiprecision/cpp_int.hpp>
+using namespace atcoder;
 using namespace boost::multiprecision;
 using namespace std;
 using ll = long long;
