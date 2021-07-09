@@ -21,14 +21,17 @@ int main() {
 
   // solve
   vector<ll> C(N);
-  rep(i, N) { C[i] = A[i] - (i + 1); }
-  rep(i, Q) {
-    if (C[N - 1] < K[i]) {
-      cout << A[N - 1] + (K[i] - C[N - 1]) << endl;
+  rep(i, N) { C[i] = A[i] - i - 1; }
+  rep(qi, Q) {
+    if (C[N - 1] < K[qi]) {
+      cout << A[N - 1] + (K[qi] - C[N - 1]) << endl;
     } else {
-      auto it = lower_bound(C.begin(), C.end(), K[i]);
-      auto lower_i = distance(C.begin(), it);
-      cout << (A[lower_i] - 1) - (C[lower_i] - K[i]) << endl;
+      auto lower_it = lower_bound(C.begin(), C.end(), K[qi]) - C.begin();
+      if (lower_it == 0) {
+        cout << K[qi] << endl;
+      } else {
+        cout << A[lower_it - 1] + K[qi] - C[lower_it - 1] << endl;
+      }
     }
   }
 }

@@ -14,20 +14,19 @@ const ll LLINF = LLONG_MAX;
 
 int main() {
   // input
+  const int MAX = 210000;
   int N;
   cin >> N;
   vector<ll> A(N);
   rep(i, N) { cin >> A[i]; }
-  // solve
-  int res = 0;
-  const int M = 200005;
-  dsu d(M);
-  rep(i, N) { d.merge(A[i], A[N - 1 - i]); }
-  rep(i, M) {
-    if (d.leader(i) != i) {
-      continue;
+  // output
+  dsu d(MAX);
+  rep(i, N / 2) { d.merge(A[i], A[N - 1 - i]); }
+  ll res = 0;
+  rep(i, MAX) {
+    if (d.leader(i) == i) {
+      res += d.size(i) - 1;
     }
-    res += d.size(i) - 1;
   }
   cout << res << endl;
 }
