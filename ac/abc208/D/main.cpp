@@ -20,22 +20,13 @@ int main() {
   rep(i, M) { cin >> A[i] >> B[i] >> C[i]; }
 
   // solve
-  vector<vector<ll>> dist(N, vector<ll>(N, INF));
-  rep(i, N) { dist[i][i] = 0; }
-  rep(i, M) {
-    --A[i], --B[i];
-    dist[A[i]][B[i]] = C[i];
-  }
+  vector<ll> dist(N);
   ll res = 0;
-  rep(k, N) {
-    rep(i, N) {
-      rep(j, N) {
-        dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
-        if (dist[i][j] != INF) {
-          res += dist[i][j];
-        }
+  rep(i, M) {
+    rep(j, M) {
+      rep(k, M) {
+        
       }
     }
   }
-  cout << res << endl;
 }
