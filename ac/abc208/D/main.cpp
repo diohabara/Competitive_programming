@@ -24,9 +24,7 @@ int main() {
   ll res = 0;
   rep(i, M) {
     rep(j, M) {
-      rep(k, M) {
-        
-      }
+      rep(k, M) {}
     }
   }
 }
