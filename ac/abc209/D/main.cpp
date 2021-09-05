@@ -16,38 +16,42 @@ int main() {
   // input
   int N, Q;
   cin >> N >> Q;
-  vector<ll> a(N), b(N);
+  vector<vector<int>> graph(N);
   vector<ll> c(Q), d(Q);
-  rep(i, N - 1) { cin >> a[i] >> b[i]; }
-  rep(i, Q) { cin >> c[i] >> d[i]; }
+  rep(i, N - 1) {
+    int a, b;
+    cin >> a >> b;
+    a--, b--;
+    graph[a].push_back(b);
+    graph[b].push_back(a);
+  }
+  rep(i, Q) {
+    cin >> c[i] >> d[i];
+    c[i]--, d[i]--;
+  }
 
   // solve
-  vector<vector<int>> G(N);
-  rep(i, N - 1) {
-    a[i]--, b[i]--;
-    G[a[i]].push_back(b[i]);
-    G[b[i]].push_back(a[i]);
-  }
-  queue<int> que;
   vector<int> dist(N, -1);
-  que.push(0);
+  // BFS
+  queue<int> q;
+  q.push(0);  // consider 0 as a root node
   dist[0] = 0;
-  while (!que.empty()) {
-    int cur = que.front();
-    que.pop();
-    for (int x : G[cur]) {
-      if (dist[x] == -1) {
-        dist[x] = dist[cur] + 1;
-        que.push(x);
+  while (!q.empty()) {
+    int from = q.front();
+    q.pop();
+    for (int& to : graph[from]) {
+      if (dist[to] != -1) {
+        continue;
       }
+      dist[to] = dist[from] + 1;
+      q.push(to);
     }
   }
   rep(i, Q) {
-    c[i]--, d[i]--;
     if (dist[c[i]] % 2 == dist[d[i]] % 2) {
-      cout << "Town" << endl;
+      puts("Town");
     } else {
-      cout << "Road" << endl;
+      puts("Road");
     }
   }
 }
