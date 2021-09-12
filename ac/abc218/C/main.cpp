@@ -64,7 +64,8 @@ bool is_same_shape(const vector<string>& matrix1,
         if (matrix1[i][j] != matrix2[moved_i][moved_j]) {  // different figures
           return false;
         }
-      } else if (matrix1[i][j] == '#') {
+      } else if (matrix1[i][j] ==
+                 '#') {  // if the left-top matrix2's '#' is far away
         return false;
       }
     }
