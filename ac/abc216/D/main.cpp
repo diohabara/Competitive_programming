@@ -24,7 +24,7 @@ int main() {
                                 // duplicate
   vector<queue<int>> a(M);      // each balls
   vector<vector<int>> indices_of_front_color(
-      M);  // index of front colors of each balls
+      N);  // index of front colors of each balls
   rep(i, M) {
     int k;
     cin >> k;
@@ -62,8 +62,8 @@ int main() {
     }
   }
 
-  for (auto& c : a) {
-    if (!c.empty()) {
+  for (auto balls : a) {
+    if (!balls.empty()) {
       cout << NO << endl;
       return 0;
     }

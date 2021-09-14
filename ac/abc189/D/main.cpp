@@ -19,12 +19,20 @@ int main() {
   }
 
   // solve
-  ll ans = 1;  // i == 0
-  rep(i, N) {
-    if (S[i] == "OR") {
-      ans += (1 << (i + 1));
+  /**
+   * comb[i][0]: the number of y_i combination of false
+   * comb[i][1]: the number of y_i combination of true
+   */
+  vector<vector<ll>> comb(N + 1, vector<ll>(2, 0));
+  comb[0][0] = comb[0][1] = 1;
+  for (int i = 1; i <= N; i++) {
+    if (S[i - 1] == "OR") {
+      comb[i][0] = comb[i - 1][0];
+      comb[i][1] = comb[i - 1][0] + 2 * comb[i - 1][1];
+    } else {
+      comb[i][0] = 2 * comb[i - 1][0] + comb[i - 1][1];
+      comb[i][1] = comb[i - 1][1];
     }
   }
-  cout << ans << endl;
-  return 0;
+  cout << comb[N][1] << endl;
 }
