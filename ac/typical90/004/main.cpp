@@ -14,6 +14,29 @@ const ll LLINF = LLONG_MAX;
 
 int main() {
   // input
+  int H, W;
+  cin >> H >> W;
+  vector<vector<int>> A(H, vector<int>(W));
+  rep(i, H) {
+    rep(j, W) { cin >> A[i][j]; }
+  }
 
   // solve
+  vector<int> rows(H);
+  vector<int> columns(W);
+  rep(i, H) {
+    rep(j, W) { rows[i] += A[i][j]; }
+  }
+  rep(j, W) {
+    rep(i, H) { columns[j] += A[i][j]; }
+  }
+  rep(i, H) {
+    rep(j, W) {
+      if (j != 0) {
+        cout << " ";
+      }
+      cout << rows[i] + columns[j] - A[i][j];
+    }
+    cout << "\n";
+  }
 }
