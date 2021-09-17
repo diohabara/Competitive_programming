@@ -14,6 +14,16 @@ const ll LLINF = LLONG_MAX;
 
 int main() {
   // input
+  int N;
+  cin >> N;
+  vector<ll> A(N), B(N);
+  rep(i, N) { cin >> A[i]; }
+  rep(i, N) { cin >> B[i]; }
 
   // solve
+  sort(A.begin(), A.end());
+  sort(B.begin(), B.end());
+  ll ans = 0;
+  rep(i, N) { ans += abs(A[i] - B[i]); }
+  cout << ans << endl;
 }
