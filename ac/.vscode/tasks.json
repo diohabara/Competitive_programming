@@ -3,25 +3,30 @@
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
+  "options": {
+    "shell": {
+      "args": ["-c", "-l"]
+    }
+  },
   "tasks": [
     {
       "label": "competitiveTestSample",
       "type": "shell",
-      "command": "cd ${fileDirname} && g++ -I ~/ac-library -I /usr/local/Cellar/boost/1.76.0/include/ -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools test",
+      "command": "cd ${fileDirname} && g++ -I ~/bits -I ~/ac-library -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools test",
+      "group": "test",
       "presentation": {
         "reveal": "always",
-        "focus": true,
-        "panel": "shared"
+        "panel": "new"
       }
     },
     {
       "label": "competitiveSubmit",
       "type": "shell",
-      "command": "cd ${fileDirname} && g++ -I ~/ac-library -I /usr/local/Cellar/boost/1.76.0/include/ -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools submit -u",
+      "command": "cd ${fileDirname} && g++ -I ~/bits -I ~/ac-library -std=gnu++17 -Wall -Wextra -O0 ${fileBasename} && atcoder-tools submit -u",
+      "group": "test",
       "presentation": {
         "reveal": "always",
-        "focus": true,
-        "panel": "shared"
+        "panel": "new"
       }
     }
   ]
