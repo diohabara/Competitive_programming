@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
 
 #include <atcoder/all>
-#include <boost/multiprecision/cpp_int.hpp>
 using namespace atcoder;
-using namespace boost::multiprecision;
 using namespace std;
 using ll = long long;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
@@ -17,6 +15,18 @@ const string NO = "No";
 
 int main() {
   // input
+  int N, K;
+  cin >> N >> K;
+  vector<ll> A(N), B(N);
+  rep(i, N) { cin >> A[i]; }
+  rep(i, N) { cin >> B[i]; }
 
   // solve
+  ll diff = 0;
+  rep(i, N) { diff += abs(A[i] - B[i]); }
+  if (diff <= K && diff % 2 == K % 2) {
+    cout << YES << endl;
+  } else {
+    cout << NO << endl;
+  }
 }
