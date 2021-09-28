@@ -26,7 +26,7 @@ int main() {
   }
 
   // solve
-  int res = 0;
+  ll res = 0;
   rep(i, H - 1) {
     rep(j, W - 1) {
       int diff = B[i][j] - A[i][j];

@@ -12,24 +12,31 @@ const ll LLINF = LLONG_MAX;
 
 int main() {
   // input
-  int N;
+  ll N;
   cin >> N;
   string S;
   cin >> S;
 
   // solve
-  int cnt = 0;
-  vector<pair<char, int>> rle;  // run-length of 'o' or 'x'
+  ll cnt = 0;
+  vector<ll> rl;  // run-length of 'o' or 'x'
+
+  // think about complimentary events
+  // that is all 'o' or all 'x'
   rep(i, S.size()) {
     cnt++;
     if (i == (int)S.size() - 1 || S[i] != S[i + 1]) {
-      rle.push_back(make_pair(S[i], cnt));
+      rl.push_back(cnt);
       cnt = 0;
     }
   }
+
   ll comp_cnt = 0;  // count of sequences that have one kind of character
-  rep(i, rle.size()) {
-    comp_cnt += 1LL * rle[i].second * (rle[i].second + 1) / 2;
+  // d*(d+1)/2 == all combinations with a same char
+  for (auto& len : rl) {
+    comp_cnt += len * (len + 1LL) / 2LL;
   }
-  cout << N * (N + 1) / 2 - comp_cnt << endl;
+  // N*(N+1)/2 == all possible combinations
+  // all comb - one char comb = desired result
+  cout << N * (N + 1LL) / 2LL - comp_cnt << endl;
 }
