@@ -15,19 +15,18 @@ int main() {
   int N;
   cin >> N;
   vector<int> A(N);
-  rep(i, N) {
-    cin >> A[i];
-    A[i] %= 10;
-  }
+  rep(i, N) { cin >> A[i]; }
 
   // solve
-  // dp[A[i]][j] := A[i]まで操作に関わったときに先頭がjである確率
+  // dp[i][j] := A[i]まで操作に関わったときに先頭がjである確率
   vector<vector<ll>> dp(N, vector<ll>(10, 0));
   dp[0][A[0]] = 1;
   for (int i = 1; i < N; i++) {
     rep(j, 10) {
       dp[i][(j + A[i]) % 10] += dp[i - 1][j];
       dp[i][(j * A[i]) % 10] += dp[i - 1][j];
+      dp[i][(j + A[i]) % 10] %= MOD;
+      dp[i][(j * A[i]) % 10] %= MOD;
     }
   }
   rep(i, 10) { cout << dp[N - 1][i] << endl; }
