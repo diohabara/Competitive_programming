@@ -12,6 +12,16 @@ ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 
 int main() {
   // input
+  int N;
+  cin >> N;
+  vector<ll> A(N);
+  rep(i, N) cin >> A[i];
 
   // solve
+  ll ans = 0;
+  sort(A.begin(), A.end());
+  vector<ll> cum(N + 1);  // cum[i] := 0 + A[0] + ... + A[i]
+  rep(i, N) cum[i + 1] = cum[i] + A[i];
+  rep(i, N) ans += (cum[N] - cum[i]) - (N - i) * A[i];
+  cout << ans << endl;
 }
