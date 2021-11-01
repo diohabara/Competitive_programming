@@ -12,6 +12,19 @@ const ll LLINF = LLONG_MAX;
 
 int main() {
   // input
+  int N;
+  cin >> N;
+  vector<int> a(N);
+  rep(i, N) cin >> a[i];
 
   // solve
+  int all = 0;
+  for (auto ele : a) {
+    all ^= ele;
+  }
+  rep(i, N) {
+    if (i) cout << " ";
+    cout << (all ^ a[i]);
+  }
+  cout << endl;
 }
