@@ -12,6 +12,11 @@ const ll LLINF = LLONG_MAX;
 
 int main() {
   // input
+  int N, P;
+  cin >> N >> P;
+  vector<int> a(N);
+  rep(i, N) cin >> a[i];
 
   // solve
+  cout << count_if(a.begin(), a.end(), [&](int e) { return e < P; }) << endl;
 }
