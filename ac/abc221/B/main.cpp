@@ -15,6 +15,20 @@ const string NO = "No";
 
 int main() {
   // input
+  string S, T;
+  cin >> S >> T;
 
   // solve
+  rep(i, S.size()) {
+    rep(j, S.size()) {
+      if (2 <= abs(i - j)) continue;
+      string s = S;
+      swap(s[i], s[j]);
+      if (s == T) {
+        cout << YES << endl;
+        return 0;
+      }
+    }
+  }
+  cout << NO << endl;
 }
